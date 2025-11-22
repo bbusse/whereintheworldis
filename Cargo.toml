@@ -1,0 +1,26 @@
+[[bin]]
+name = "wintwi"
+path = "src/main.rs"
+[package]
+name = "whereintheworldis"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+minreq = { version = "2.8", default-features = false, features = ["https"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[profile.release]
+# Enable link-time optimization (whole-program optimization)
+lto = true
+# Strip debug symbols to reduce size
+strip = "debuginfo"
+# Optimize for size instead of speed
+opt-level = "z"
+# Reduce codegen units to improve optimization
+codegen-units = 1
+# Panic strategy: abort instead of unwinding (smaller binary)
+panic = "abort"
+# Ensures cleaner builds without leftover artifacts
+incremental = false
