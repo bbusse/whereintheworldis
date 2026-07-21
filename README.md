@@ -1,15 +1,15 @@
-# witwi
+# wi
 
 A minimal CLI tool to geolocate IP addresses using [ip-api.com](http://ip-api.com/).
 
 ## Description
-`witwi` queries country, region, city, and coordinates for a given IP address (or your own if none is provided).
+`wi` queries country, region, city, and coordinates for a given IP address (or your own if none is provided).
 
 
 ## Usage
 
 ```sh
-./witwi [--ip-address <IP>] [--output <field>]
+./wi [--ip-address <IP>] [--output <field>]
 ```
 - `--ip-address <IP>`: Optional. IP address to geolocate. If omitted, uses your own IP.
 - `--output <field>`: Optional. Print only the specified field. Supported fields:
@@ -19,17 +19,17 @@ A minimal CLI tool to geolocate IP addresses using [ip-api.com](http://ip-api.co
 
 Show all info for your own IP:
 ```sh
-./witwi
+./wi
 ```
 
 Show only the city for a specific IP:
 ```sh
-./witwi --ip-address 8.8.8.8 --output city
+./wi --ip-address 8.8.8.8 --output city
 ```
 
 Show coordinates for a specific IP:
 ```sh
-./witwi --ip-address 8.8.8.8 --output coordinates
+./wi --ip-address 8.8.8.8 --output coordinates
 ```
 
 ## Installation
@@ -37,7 +37,7 @@ Show coordinates for a specific IP:
 ### Install directly from git
 You can install the binary using cargo:
 ```sh
-cargo install --git https://github.com/bjoernb/whereintheworldis --bin witwi
+cargo install --git https://github.com/bjoernb/whereintheworldis --bin wi
 ```
 
 ### Prerequisites
