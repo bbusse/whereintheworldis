@@ -1,5 +1,5 @@
 [[bin]]
-name = "witwi"
+name = "wi"
 path = "src/main.rs"
 [package]
 name = "whereintheworldis"
