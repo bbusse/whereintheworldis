@@ -1,0 +1,39 @@
+name: Build and Release Rust Binaries
+
+on:
+  push:
+    branches: [dev]
+    tags:
+      - 'rc-*'
+      - 'release-*'
+  pull_request:
+    branches: [dev]
+  workflow_dispatch:
+
+jobs:
+  build-macos-arm64:
+    uses: bbusse/github-workflows/.github/workflows/build-rust.yml@dev
+    with:
+      binary_name: wi
+      artifact_name: wi
+      musl: true
+
+  build-freebsd:
+    uses: bbusse/github-workflows/.github/workflows/build-rust-pkg-freebsd.yml@dev
+    with:
+      binary_name: wi
+      artifact_name: wi
+
+  release:
+    needs:
+      - build-macos-arm64
+      - build-freebsd
+    if: startsWith(github.ref, 'refs/tags/')
+    permissions:
+      contents: write
+    uses: bbusse/github-workflows/.github/workflows/release-rust.yml@dev
+    with:
+      artifact_name: wi
+      binary_name: wi
+      release_branch: dev
+    secrets: inherit
